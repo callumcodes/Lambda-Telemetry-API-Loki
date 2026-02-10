@@ -15,7 +15,7 @@ tasks:
       - rm -f extension.zip
       - zip -r extension.zip extensions/
       - >
-        ARN=`aws lambda publish-layer-version --layer-name "grafana-loki-extension" --compatible-runtimes nodejs16.x go1.x python3.9 --zip-file  "fileb://extension.zip" --query "LayerVersionArn" --output text` && \
+        ARN=`aws lambda publish-layer-version --layer-name "grafana-loki-extension" --compatible-runtimes nodejs16.x go1.x python3.9 provided.al2 provided.al2023 --zip-file  "fileb://extension.zip" --query "LayerVersionArn" --output text` && \
           echo $ARN && \
           LAYER_VERSION=`echo $ARN | cut -d: -f8` && \
           echo $LAYER_VERSION && \
